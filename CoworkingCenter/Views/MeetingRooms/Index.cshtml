@@ -1,0 +1,35 @@
+@model IEnumerable<CoworkingCenter.Models.MeetingRoom>
+
+@{
+    ViewData["Title"] = "Переговорные комнаты";
+}
+
+<h1>Переговорные комнаты</h1>
+
+<table class="table">
+    <thead>
+    <tr>
+        <th>Название</th>
+        <th>Вместимость</th>
+        <th>Оборудование</th>
+        <th>Цена в час</th>
+        <th>Доступна</th>
+    </tr>
+    </thead>
+    <tbody>
+    @foreach (var item in Model)
+    {
+        <tr>
+            <td>@item.Name</td>
+            <td>@item.Capacity</td>
+            <td>@item.Equipment</td>
+            <td>@item.PricePerHour</td>
+            <td>@(item.IsAvailable ? "Да" : "Нет")</td>
+        </tr>
+    }
+    </tbody>
+</table>
+
+<br/>
+<a href="/Residents">Резиденты</a> | 
+<a href="/Workplaces">Рабочие места</a>

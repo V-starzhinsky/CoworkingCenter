@@ -1,0 +1,68 @@
+@model CoworkingCenter.Models.Resident
+
+@{
+    ViewData["Title"] = "Детали резидента";
+}
+
+<h1>Детали резидента</h1>
+
+<div>
+    <hr />
+    <dl class="row">
+        <dt class="col-sm-2">
+            ФИО/Компания
+        </dt>
+        <dd class="col-sm-10">
+            @Model.FullNameOrCompany
+        </dd>
+        <dt class="col-sm-2">
+            Контакты
+        </dt>
+        <dd class="col-sm-10">
+            @Model.Contacts
+        </dd>
+        <dt class="col-sm-2">
+            Тариф
+        </dt>
+        <dd class="col-sm-10">
+            @Model.Tariff
+        </dd>
+        <dt class="col-sm-2">
+            Дата начала
+        </dt>
+        <dd class="col-sm-10">
+            @Model.SubscriptionStartDate.ToShortDateString()
+        </dd>
+        <dt class="col-sm-2">
+            Дата окончания
+        </dt>
+        <dd class="col-sm-10">
+            @Model.SubscriptionEndDate.ToShortDateString()
+        </dd>
+        <dt class="col-sm-2">
+            Статус
+        </dt>
+        <dd class="col-sm-10">
+            @if (Model.IsActive)
+            {
+                <span style="color: green;">Активен</span>
+            }
+            else
+            {
+                <span style="color: red;">Неактивен</span>
+            }
+        </dd>
+        <dt class="col-sm-2">
+            Общее время аренды
+        </dt>
+        <dd class="col-sm-10">
+            @ViewBag.TotalRentalHours часов
+        </dd>
+    </dl>
+</div>
+
+<div>
+    <a href="/Residents">Назад к списку</a> |
+    <a href="/Workplaces">Рабочие места</a> |
+    <a href="/MeetingRooms">Переговорные</a>
+</div>

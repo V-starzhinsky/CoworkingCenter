@@ -1,0 +1,52 @@
+@model IEnumerable<CoworkingCenter.Models.Resident>
+
+@{
+    ViewData["Title"] = "Активные резиденты";
+}
+
+<h1>Резиденты с активными абонементами</h1>
+
+<!-- Навигация -->
+<div>
+    <a href="/Residents">Резиденты</a> |
+    <a href="/Workplaces">Рабочие места</a> |
+    <a href="/MeetingRooms">Переговорные</a>
+</div>
+
+<br/>
+
+<table class="table table-striped">
+    <thead>
+    <tr>
+        <th>ФИО/Компания</th>
+        <th>Контакты</th>
+        <th>Тариф</th>
+        <th>Дата начала</th>
+        <th>Дата окончания</th>
+        <th>Статус</th>
+        <th>Действия</th>
+    </tr>
+    </thead>
+    <tbody>
+    @foreach (var item in Model)
+    {
+        <tr>
+            <td>@item.FullNameOrCompany</td>
+            <td>@item.Contacts</td>
+            <td>@item.Tariff</td>
+            <td>@item.SubscriptionStartDate.ToShortDateString()</td>
+            <td>@item.SubscriptionEndDate.ToShortDateString()</td>
+            <td>
+                @if (item.IsActive)
+                {
+                    <span style="color: green;">Активен</span>
+                }
+            </td>
+            <td>
+                <!-- ВОТ ТАК ДОЛЖНА ВЫГЛЯДЕТЬ КЛИКАБЕЛЬНАЯ ССЫЛКА -->
+                <a href="/Residents/Details/@item.Id" class="btn btn-success btn-sm">🔵 Детали</a>
+            </td>
+        </tr>
+    }
+    </tbody>
+</table>
