@@ -1,0 +1,14 @@
+# Инициализация Git
+  git init
+  
+  # Добавление файлов
+  git add .
+
+# Коммит
+git commit -m "Initial commit: Coworking Center MVC with caching"
+
+# Добавление удаленного репозитория
+  git remote add origin https://github.com/V-starzhinsky//CoworkingCenter.git
+  
+  # Пуш
+  git push -u origin main
